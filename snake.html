@@ -114,17 +114,17 @@ function spawnFood() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // 食物
+  // 食物 - 苹果
   const pulse = 1 + 0.15 * Math.sin(Date.now() / 200);
+  const fx = food.x * CELL + CELL / 2;
+  const fy = food.y * CELL + CELL / 2;
   ctx.save();
-  ctx.translate(food.x * CELL + CELL/2, food.y * CELL + CELL/2);
+  ctx.translate(fx, fy);
   ctx.scale(pulse, pulse);
-  ctx.fillStyle = '#e94560';
-  ctx.shadowColor = '#e94560';
-  ctx.shadowBlur = 10;
-  ctx.beginPath();
-  ctx.arc(0, 0, CELL/2 - 2, 0, Math.PI * 2);
-  ctx.fill();
+  ctx.font = `${CELL * 0.8}px serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('🍎', 0, 0);
   ctx.restore();
 
   // 蛇身
